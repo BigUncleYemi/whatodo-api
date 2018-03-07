@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/sucessful">
+        <label For="nameTask">Enter Name of Task</label>
+        <input type="text" name="TaskName" placeholder="e.g To play with Bee-Jay" required />
+        <label For="nameTask">Enter Date of Task</label>
+        <input type="date" name="TaskDate" id="dateTask" required />
+        <label For="timeTask">Set Task Due Time </label>
+        <input type="time" name="TaskTime" id="timeTask" required />
+        <label For="venueTask">Enter Venue of Task</label>
+        <input type="text" name="TaskVenue" id="venueTask" placeholder="e.g Mayfair, Big Ben"/>
+        <label For="priortyTask">Select Priority of Task</label>
+        <select name="TaskPriority" > 
+            <option value="Free">Free</option>
+            <option value="URGENT">Urgent!</option>
+        </select>
+        <p id="notestask">Notes</p>
+        <textarea  name="TaskNote" id="" cols="30" rows="10"></textarea>
+        <button type="submit" value="submit">Save Task</button>		
+    </form>
+</body>
+</html>
