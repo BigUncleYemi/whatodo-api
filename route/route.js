@@ -43,10 +43,10 @@ module.exports = function (app) {
                     status: false,
                     error: "error ocured on getting tasks."
                 });
-            }
+            } else {
             return res.json({
                 results
-            });
+            });}
         });
     });
 
@@ -57,10 +57,10 @@ module.exports = function (app) {
                     status: false,
                     error: "error occured during search"
                 });
-            }
-            return res.json({
+            } else {           return res.json({
                 results
             });
+        }
         })
     })
 
@@ -71,10 +71,11 @@ module.exports = function (app) {
                     status: false,
                     error: "error occured during update"
                 });
-            }
+            }  else {
             return res.json({
                 results
             });
+        }
         })
     })
 
@@ -87,11 +88,12 @@ module.exports = function (app) {
                     status: false,
                     error: "delete unsucesssful."
                 });
-            }
+            } else {
             return res.json({
                 results,
                 message: "sucessful."
             })
+        }
         })
     })
 

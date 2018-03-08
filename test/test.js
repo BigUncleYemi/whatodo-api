@@ -15,6 +15,7 @@ describe('API Tests', function () {
     TaskPriority: 'free',
     TaskNote: 'dk eat and sleep'
   }
+  var id = 'one';
   describe('# Form page Rendered', function () {
     after(function (done) {
       server.close();
@@ -38,6 +39,7 @@ describe('API Tests', function () {
         expect(res.statusCode).to.equal(200);
         expect(res.body.results.TaskName).to.equal('sleep well');
         results = res.body;
+        id = res.body.results._id;
         done();
       })
     })
@@ -52,7 +54,8 @@ describe('API Tests', function () {
     it('should get all tasks', function (done) {
       request.get('/api').end(function (err, res) {
         expect(res.statusCode).to.equal(200);
-        expect(res.body).to.be.an('object');
+        expect(res.body.results).to.be.an('array');
+        console.log(res.body);
         done();
       })
     })
@@ -65,9 +68,10 @@ describe('API Tests', function () {
   });
 
     it('should get a task', function (done) {
-      request.get('/api/' + results._Id).end(function (err, res) {
+      request.get('/api/' + id).end(function (err, res) {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
+        console.log(res.body);
         done();
       })
     })
@@ -76,7 +80,7 @@ describe('API Tests', function () {
   describe('Update a task by id', function() {
     it('should modify a task', function(done) {
       results.TaskName = 'wake up'
-      request.put('/api/update/' + results._Id).send(results).end(function(err, res) {
+      request.put('/api/update/' + id).send(results).end(function(err, res) {
           expect(res.body.results.TaskName).to.equal('wake up');
           expect(res.statusCode).to.equal(200);
           done();
@@ -90,9 +94,10 @@ describe('API Tests', function () {
       done();
     });
     it('should delete a task', function (done) {
-      request.delete('/sucessful/'+ results._Id).end(function (err, res) {
+      request.delete('/sucessful/'+ id).end(function (err, res) {
           expect(res.statusCode).to.equal(200);
           expect(res.body).to.be.a('Object');
+          console.log(res.body);
         done();
       })
     })
@@ -107,6 +112,7 @@ describe('API Tests', function () {
       request.delete('/sucessful').end(function (err, res) {
         expect(res.statusCode).to.equal(200);
         expect(res.body.message).to.be.an('string');
+        console.log(res.body);
         done();
       })
     })

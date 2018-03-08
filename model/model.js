@@ -6,10 +6,7 @@ var whatodo = new Schema({
     TaskDate: String,
     TaskTime: String,
     TaskVenue: String,
-    TaskPriority: {
-        Type: String,
-        enum: ["free", "Urgent!"]
-    },
+    TaskPriority: String,
     TaskNote: String
 });
 
